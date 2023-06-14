@@ -1,32 +1,51 @@
 package com.green.todoapp;
 
-import com.green.todoapp.model.TodoEntity;
-import com.green.todoapp.model.TodoInsDto;
+import com.green.todoapp.model.*;
+import jakarta.annotation.Nullable;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/todo")
 public class TodoController {
 
     private final TodoService service;
-    @Autowired
-    public TodoController(TodoService service) {
-        this.service = service;
-    }
 
+
+
+
+    @PostMapping//(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE,MediaType.APPLICATION_JSON_VALUE})
+    public Long postTodo( @RequestBody TodoInsDto dto){
+
+        return service.insTodo(dto);
+    }
     @GetMapping
-    public String getTodo(){
-        return "test";
+     public List<TodoSelVo>getTodo(){
+//        @RequestParam (defaultValue = "1") int page,@RequestParam (defaultValue = "20") int row
+//        TodoSelDto dto = new TodoSelDto();
+//        dto.setRow(row);
+//        dto.setPage(page);
+        return service.selTodo();
     }
 
-    @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE,MediaType.APPLICATION_JSON_VALUE})
-    public Long postTodo(@RequestPart MultipartFile img,@RequestPart TodoInsDto dto){
+    @PatchMapping
+    public int updTodo(@RequestBody TodoUpdDto dto){
 
-        return service.insTodo(dto,img);
+        return service.updTodo(dto);
     }
+
+    @PatchMapping("/del")
+    public int delTodo(@RequestBody TodoUpdDto dto){
+
+        return service.delTodo(dto);
+    }
+
 
 }
 

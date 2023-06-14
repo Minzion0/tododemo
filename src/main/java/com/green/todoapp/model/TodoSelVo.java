@@ -1,13 +1,16 @@
 package com.green.todoapp.model;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import org.springframework.beans.factory.annotation.Autowired;
 
-@Data
-public class TodoEntity {
+@Getter
+@AllArgsConstructor
+public class TodoSelVo {
     private Long itodo;
     private String ctnt;
     private String createdAt;
-    private int delYn;
     private String pic;
     private int finishYn;
     private String finishedAt;

@@ -9,7 +9,7 @@ public class FileUtils {
     public static String makeRandomFileNm(String fileNm){
         String uuid = UUID.randomUUID().toString();
         String substring = fileNm.substring(fileNm.lastIndexOf("."));
-        String RdNm ="/"+ uuid + substring;
+        String RdNm = uuid + substring;
         return RdNm;
     }
 
