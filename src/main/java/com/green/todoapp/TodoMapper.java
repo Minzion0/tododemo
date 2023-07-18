@@ -13,7 +13,6 @@ public interface TodoMapper {
 
    int insTodo(TodoEntity entity);
     List<TodoSelVo>selTodo();
-    int findFinsh(TodoUpdDto dto);
-    Long updTodo(TodoEntity entity);
-    Long delTodo(TodoEntity entity);
+    int updTodo(TodoEntity entity);
+    int delTodo(TodoEntity entity);
 }

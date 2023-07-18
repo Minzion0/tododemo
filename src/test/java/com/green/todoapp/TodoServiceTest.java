@@ -68,10 +68,25 @@ class TodoServiceTest {
     @DisplayName("TODOService 완료체크")
     void updTodo(){
 
-        when(mapper.updTodo(any(TodoUpdDto.class))).thenReturn(1);
+        when(mapper.updTodo(any(TodoEntity.class))).thenReturn(0);
         TodoUpdDto dto = new TodoUpdDto();
         dto.setItodo(1L);
         int i = service.updTodo(dto);
+        assertEquals(0,i);
+
+
+        verify(mapper).updTodo(any(TodoEntity.class));
+    }
+    @Test
+    @DisplayName("Todo 삭제")
+    void delTodo(){
+
+        when(mapper.delTodo(any(TodoEntity.class))).thenReturn(1);
+        TodoUpdDto dto = new TodoUpdDto();
+        dto.setItodo(1L);
+        int i = service.delTodo(dto);
         assertEquals(1,i);
+
+        verify(mapper).delTodo(any(TodoEntity.class));
     }
 }

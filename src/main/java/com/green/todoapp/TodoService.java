@@ -63,8 +63,7 @@ public class TodoService {
     public int delTodo(TodoUpdDto dto){
         TodoEntity entity = new TodoEntity();
         entity.setItodo(dto.getItodo());
-        mapper.delTodo(entity);
 
-        return entity.getDelYn();
+        return mapper.delTodo(entity);
     }
 }

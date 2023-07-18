@@ -40,9 +40,10 @@ public class TodoController {
         return service.updTodo(dto);
     }
 
-    @PatchMapping("/del")
-    public int delTodo(@RequestBody TodoUpdDto dto){
-
+    @DeleteMapping
+    public int delTodo(@RequestParam Long itodo){
+        TodoUpdDto dto= new TodoUpdDto();
+        dto.setItodo(itodo);
         return service.delTodo(dto);
     }
 

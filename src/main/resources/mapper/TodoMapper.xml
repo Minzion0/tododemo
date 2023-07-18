@@ -42,7 +42,7 @@
         </selectKey>
 
         UPDATE t_todo
-        SET del_yn = 1 - del_yn
+        SET del_yn = 1
         WHERE itodo = #{itodo}
     </update>
 </mapper>
